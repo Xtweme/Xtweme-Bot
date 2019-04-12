@@ -56,7 +56,7 @@ client.on("message", async message => {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
     // To get the "message" itself we join the `args` back into a string with spaces: 
     const sayMessage = args.join(" ");
-    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) ) return
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
@@ -67,7 +67,7 @@ client.on("message", async message => {
     // This command must be limited to mods and admins. In this example we just hardcode the role names.
     // Please read on Array.some() to understand this bit: 
     // https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/some?
-    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) ) return
       return message.reply("Sorry, you don't have permissions to use this!");
     
     // Let's first check if we have a member and if we can kick them!
@@ -94,7 +94,7 @@ client.on("message", async message => {
   if(command === "ban") {
     // Most of this command is identical to kick, except that here we'll only let admins do it.
     // In the real world mods could ban too, but this is just an example, right? ;)
-    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) ) return
       return message.reply("Sorry, you don't have permissions to use this!");
     
     let member = message.mentions.members.first();
@@ -116,7 +116,7 @@ client.on("message", async message => {
     
     // get the delete count, as an actual number.
     const deleteCount = parseInt(args[0], 10);
-    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) )
+    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) ) return
     message.delete().catch(O_o=>{});
 
     // Ooooh nice, combined conditions. <3
