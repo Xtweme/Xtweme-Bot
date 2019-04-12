@@ -115,9 +115,9 @@ client.on("message", async message => {
     // This command removes all messages from all users in the channel, up to 100.
     
     // get the delete count, as an actual number.
-    message.delete().catch(O_o=>{});
     const deleteCount = parseInt(args[0], 10);
     if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) )
+    message.delete().catch(O_o=>{});
 
     // Ooooh nice, combined conditions. <3
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
