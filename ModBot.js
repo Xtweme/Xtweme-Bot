@@ -16,7 +16,7 @@ client.on("ready", () => {
   console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`); 
   // Example of changing the bot's playing game to something useful. `client.user` is what the
   // docs refer to as the "ClientUser".
-  client.user.setActivity(`!lthelp`);
+  client.user.setActivity(`Customs`);
 });
 
 client.on("guildCreate", guild => {
@@ -55,8 +55,8 @@ client.on("message", async message => {
   if(command === "say") {
     // makes the bot say something and delete the message. As an example, it's open to anyone to use. 
     // To get the "message" itself we join the `args` back into a string with spaces: 
-    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) )
     const sayMessage = args.join(" ");
+    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) )
     // Then we delete the command message (sneaky, right?). The catch just ignores the error with a cute smiley thing.
     message.delete().catch(O_o=>{}); 
     // And we get the bot to say the thing: 
@@ -116,7 +116,8 @@ client.on("message", async message => {
     
     // get the delete count, as an actual number.
     const deleteCount = parseInt(args[0], 10);
-    
+    if(!message.member.roles.some(r=>["Admin", "Superior Human"].includes(r.name)) )
+
     // Ooooh nice, combined conditions. <3
     if(!deleteCount || deleteCount < 2 || deleteCount > 100)
       return message.reply("Please provide a number between 2 and 100 for the number of messages to delete");
@@ -127,14 +128,14 @@ client.on("message", async message => {
       .catch(error => message.reply(`Couldn't delete messages because of: ${error}`));
   }
 
-  code = client.channels.get("565271765929033739")
-  general = client.channels.get("565271005694656540")
-  verify = client.channels.get("565362396265447426")
+  code = client.channels.get("564912381205938178")
+  general = client.channels.get("564912439410556952")
+  verify = client.channels.get("564933371097120789")
 
 let match = args[0];
 let type = args[1];
   if (command === "code") {
-    if(!message.member.roles.some(r=>["Host", "Superior Human"].includes(r.name)) ) return
+    if(!message.member.roles.some(r=>["Admin", "Superior Human", "Host"].includes(r.name)) ) return
     message.delete().catch(O_o=>{});
     const embed = {
       "title": "__A customs match is starting in 5 minutes!__",
